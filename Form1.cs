@@ -2,148 +2,98 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.PerformanceData;
 using System.Drawing;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Week2_Project
+namespace Milestone_2
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form 
     {
         public Form1()
         {
             InitializeComponent();
         }
-        public String first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh;
-        public object QB, BUQB, RB, WR, TE, K, D;
-        private static int a, b, c, d;
-        private void AppendTextBoxLine(string myStr)
+        int IQTYH1, IQTYD1, IQTYN1;
+
+        private void ClearInfo_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.Text.Length > 0)
+            
+            foreach (Control Cleartext in this.Controls)
+
             {
-                richTextBox1.AppendText(Environment.NewLine);
-            }
-            richTextBox1.AppendText(myStr);
-        }
-        public void button7_Click(object sender, EventArgs e)
-        {
-            int QBIndex = QBList.SelectedIndex;
-            QB = QBList.SelectedItem;
-            int count;
-            a++;
-            count = a;
-            if (count == 1)
-            {
-                first = QB.ToString();
-                MessageBox.Show("Great Choice, now please choose a backup QB.");
-                QBList.ClearSelected();
-            }
-            if (count == 2)
-            {
-                BUQB = QBList.SelectedItem;
-                second = BUQB.ToString();
-                MessageBox.Show("Great start!" + "Now, move on to a new position.");
-                QBList.ClearSelected();
-            }
-        }
-        public void button2_Click(object sender, EventArgs e)
-        {
-            foreach (RadioButton rb in this.Controls.OfType<RadioButton>())
-            {
-                if (rb.Checked)
+
+                if (Cleartext is TextBox)
+
                 {
-                    third = rb.Text;
-                    MessageBox.Show(third + " should be a solid defense, nice choice!");
-                    break;
+
+                    ((TextBox)Cleartext).Text = string.Empty;
+
                 }
+
             }
         }
-        public void button4_Click(object sender, EventArgs e)
+        private void Delete_Click(object sender, EventArgs e)
         {
-            int TEIndex = TEList.SelectedIndex;
-            TE = TEList.SelectedItem;
-            int count1;
-            b++;
-            count1 = b;
-            if (count1 == 1)
+
+
+            foreach (ListViewItem eachItem in listView1.SelectedItems)
             {
-                fourth = TE.ToString();
-                MessageBox.Show("Wise choice, now please choose a backup TE.");
+                listView1.Items.Remove(eachItem);
             }
-            if (count1 == 2)
-            {
-                fifth = TEList.ToString();
-                MessageBox.Show("Great, on to the next position now.");
-            }
-        }
-        public void button5_Click(object sender, EventArgs e)
-        {
-            int RBIndex = RBList.SelectedIndex;
-            RB = RBList.SelectedItem;
-            int count2;
-            c++;
-            count2 = c;
-            if (count2 == 1)
-            {
-                sixth = RB.ToString();
-                MessageBox.Show("Wise choice, now please choose a backup RB.");
-            }
-            if (count2 == 2)
-            {
-                seventh = RBList.ToString();
-                MessageBox.Show("Great, on to the next position now.");
-            }
-        }
-        public void button6_Click(object sender, EventArgs e)
-        {
-            int KIndex = KickersList.SelectedIndex;
-            K = KickersList.SelectedItem;
-            eighth = K.ToString();
-            MessageBox.Show(eighth + " should be a solid pick. Please move on to the next position.");
         }
 
-        public void button3_Click(object sender, EventArgs e)
-        {
-            int WRIndex = WRList.SelectedIndex;
-            WR = WRList.SelectedItem;
-            int count3;
-            d++;
-            count3 = d;
-            if (count3 == 1)
-            {
-                ninth = WR.ToString();
-                MessageBox.Show("Wise choice, now please choose another WR.");
-                WRList.ClearSelected();
-            }
-            if (count3 == 2)
-            {
-                tenth = RBList.ToString();
-                MessageBox.Show("Great!! Now, choose a backup WR.");
-            }
-            if (count3 == 3)
-            {
-                eleventh = WR.ToString();
-                MessageBox.Show("Nice job, now click the RED build team button to build your team.");
-            }
-        }
         private void button1_Click(object sender, EventArgs e)
         {
-            AppendTextBoxLine("QB: " + first);
-            AppendTextBoxLine("Reserve_QB: " + second);
-            AppendTextBoxLine("RB: " + sixth);
-            AppendTextBoxLine("Reserve_RB: " + seventh);
-            AppendTextBoxLine("WR: " + ninth);
-            AppendTextBoxLine("WR2: " + tenth);
-            AppendTextBoxLine("Reserve_WR: " + eleventh);
-            AppendTextBoxLine("TE: " + fourth);
-            AppendTextBoxLine("Reserve_TE: " + fifth);
-            AppendTextBoxLine("K: " + eighth);
-            AppendTextBoxLine("Defense: " + third);
+            this.Close();
         }
+
+        double ICost1;
+
+
+        public void AddItem_Click(object sender, EventArgs e)
+        {
+            Inventory_Items MB2 = new Inventory_Items();
+
+            IQTYH1 = Convert.ToInt32(IQTYH.Text);
+            IQTYD1 = Convert.ToInt32(IQTYD.Text);
+            IQTYN1 = Convert.ToInt32(IQTYN.Text);
+            ICost1 = Convert.ToDouble(ICost.Text);
+            MB2.Name = IName.Text;
+            MB2.Color = IColor.Text;
+            MB2.Size = ISize.Text;
+            MB2.WhereToReorder = IReorder.Text;
+            MB2.IsNew = INew.Text;
+            MB2.DamageTo = IDamage.Text;
+            MB2.OnHandQuantity = IQTYH1;
+            MB2.DesiredQuantity = IQTYD1;
+            MB2.NeededQuantity = IQTYN1;
+            MB2.Cost = ICost1;
+            
+
+
+            string[] array = { MB2.Name, MB2.Color, MB2.Size, MB2.WhereToReorder, MB2.IsNew, MB2.DamageTo };
+            int[] intArray = { MB2.OnHandQuantity, MB2.DesiredQuantity, MB2.NeededQuantity };
+            double[] doubleArray = { MB2.Cost };
+            ListViewItem item3 = new ListViewItem(MB2.Name);
+            item3.SubItems.Add(MB2.Color);
+            item3.SubItems.Add(MB2.Size);
+            item3.SubItems.Add(MB2.WhereToReorder);
+            item3.SubItems.Add(MB2.IsNew);
+            item3.SubItems.Add(MB2.DamageTo);
+            item3.SubItems.Add(MB2.OnHandQuantity.ToString());
+            item3.SubItems.Add(MB2.DesiredQuantity.ToString());
+            item3.SubItems.Add(MB2.NeededQuantity.ToString());
+            item3.SubItems.Add(MB2.Cost.ToString());
+            listView1.Items.AddRange(new ListViewItem[] { item3 });
+
+
+
+        }
+       
+
+      
     }
 }
