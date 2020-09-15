@@ -52,9 +52,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.ClearInfo = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -68,6 +65,9 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
+            this.Search = new System.Windows.Forms.Button();
+            this.SearchBox = new System.Windows.Forms.TextBox();
+            this.Populate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AddItem
@@ -297,39 +297,6 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "10=Cost";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Yellow;
-            this.label12.Location = new System.Drawing.Point(54, 120);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(230, 16);
-            this.label12.TabIndex = 48;
-            this.label12.Text = "1-4 Should ONLY contain letters.";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Yellow;
-            this.label13.Location = new System.Drawing.Point(357, 120);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(128, 16);
-            this.label13.TabIndex = 49;
-            this.label13.Text = "5-6 ONLY yes/no.";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Yellow;
-            this.label14.Location = new System.Drawing.Point(546, 120);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(148, 16);
-            this.label14.TabIndex = 50;
-            this.label14.Text = "7-10 ONLY numbers.";
-            // 
             // ClearInfo
             // 
             this.ClearInfo.BackColor = System.Drawing.Color.PaleTurquoise;
@@ -423,6 +390,36 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Search
+            // 
+            this.Search.Location = new System.Drawing.Point(1048, 142);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(75, 23);
+            this.Search.TabIndex = 55;
+            this.Search.Text = "Search";
+            this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
+            // 
+            // SearchBox
+            // 
+            this.SearchBox.Location = new System.Drawing.Point(1028, 116);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.Size = new System.Drawing.Size(122, 20);
+            this.SearchBox.TabIndex = 56;
+            // 
+            // Populate
+            // 
+            this.Populate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Populate.Location = new System.Drawing.Point(244, 153);
+            this.Populate.Name = "Populate";
+            this.Populate.Size = new System.Drawing.Size(87, 43);
+            this.Populate.TabIndex = 57;
+            this.Populate.Text = "Populate data";
+            this.Populate.UseVisualStyleBackColor = true;
+            this.Populate.EnabledChanged += new System.EventHandler(this.AddItem_Click);
+            this.Populate.Click += new System.EventHandler(this.Populate_Click);
+            this.Populate.Validated += new System.EventHandler(this.AddItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,12 +427,12 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1169, 526);
+            this.Controls.Add(this.Populate);
+            this.Controls.Add(this.SearchBox);
+            this.Controls.Add(this.Search);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.ClearInfo);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -494,9 +491,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button ClearInfo;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -510,6 +504,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Search;
+        private System.Windows.Forms.TextBox SearchBox;
+        private System.Windows.Forms.Button Populate;
     }
 }
 
